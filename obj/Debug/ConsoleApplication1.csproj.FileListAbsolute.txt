@@ -8,3 +8,14 @@ C:\Users\capple\Documents\GitHub\Win10Win32Bluetooth\obj\Debug\ConsoleApplicatio
 C:\Users\capple\Documents\GitHub\Win10Win32Bluetooth\bin\Debug\System.Runtime.WindowsRuntime.dll
 C:\Users\capple\Documents\GitHub\Win10Win32Bluetooth\bin\Debug\Windows.winmd
 C:\Users\capple\Documents\GitHub\Win10Win32Bluetooth\bin\Debug\System.Runtime.WindowsRuntime.xml
+C:\Users\Zoli\Source\Repos\Win10Win32Bluetooth\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Zoli\Source\Repos\Win10Win32Bluetooth\bin\Debug\ConsoleApplication1.exe
+C:\Users\Zoli\Source\Repos\Win10Win32Bluetooth\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Zoli\Source\Repos\Win10Win32Bluetooth\bin\Debug\System.Runtime.WindowsRuntime.dll
+C:\Users\Zoli\Source\Repos\Win10Win32Bluetooth\bin\Debug\Windows.winmd
+C:\Users\Zoli\Source\Repos\Win10Win32Bluetooth\bin\Debug\System.Runtime.WindowsRuntime.xml
+C:\Users\Zoli\Source\Repos\Win10Win32Bluetooth\obj\Debug\ConsoleApplication1.csprojAssemblyReference.cache
+C:\Users\Zoli\Source\Repos\Win10Win32Bluetooth\obj\Debug\ConsoleApplication1.csproj.CoreCompileInputs.cache
+C:\Users\Zoli\Source\Repos\Win10Win32Bluetooth\obj\Debug\ConsoleApplication1.csproj.CopyComplete
+C:\Users\Zoli\Source\Repos\Win10Win32Bluetooth\obj\Debug\ConsoleApplication1.exe
+C:\Users\Zoli\Source\Repos\Win10Win32Bluetooth\obj\Debug\ConsoleApplication1.pdb
