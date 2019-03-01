@@ -163,50 +163,49 @@ namespace ConsoleApplication1
             DataReader bleReader = DataReader.FromBuffer(args.CharacteristicValue);
             byte[] inBytes = new byte[bleReader.UnconsumedBufferLength];
             bleReader.ReadBytes(inBytes);
-            Console.WriteLine("Device says: " + Encoding.UTF8.GetString(inBytes));
+            serialPort.Write(Encoding.ASCII.GetString(inBytes));
+
+            Console.WriteLine("STM32 says: " + Encoding.UTF8.GetString(inBytes));
         }
 
         private async void SendMessage(string message)
         {
-            bleWriter.WriteBytes(Encoding.ASCII.GetBytes(message + "\n"));
+            bleWriter.WriteBytes(Encoding.ASCII.GetBytes(message));
             await bleChannel.WriteValueAsync(bleWriter.DetachBuffer());
+            //serialPort.Write(message);
+
         }
 
         private static void InitSerialPort()
         {
-            serialPort.PortName = "COM6";
-            serialPort.BaudRate = 115000;
+            serialPort.PortName = "COM8";
+            serialPort.BaudRate = 115200;
             serialPort.ReadBufferSize = 100;
-
-            serialPort.ReadTimeout = 500;
-            serialPort.WriteTimeout = 500;
+            serialPort.Parity = Parity.None;
 
             serialPort.Open();
 
         }
 
-        private async void StartReading()
+        private void StartReading()
         {
-            byte[] buffer = new byte[11];
-            byte[] received = null;
+            byte[] buffer = new byte[1];
             Action kickoffRead = null;
-            kickoffRead = delegate
+            kickoffRead = async delegate
             {
-                serialPort.BaseStream.BeginRead(buffer, 0, buffer.Length, delegate (IAsyncResult ar)
+                int actualLength = await serialPort.BaseStream.ReadAsync(buffer, 0, buffer.Length);
+                try
                 {
-                    try
-                    {
-                        int actualLength = serialPort.BaseStream.EndRead(ar);
-                        received = new byte[actualLength];
-                        System.Buffer.BlockCopy(buffer, 0, received, 0, actualLength);
-                        Console.WriteLine("Device says: " + Encoding.UTF8.GetString(received));
-                    }
-                    catch (IOException exc)
-                    {
-                        Console.WriteLine("Exception raised during reading");
-                    }
-                    kickoffRead();
-                }, null);
+                    byte[] received = new byte[actualLength];
+                    System.Buffer.BlockCopy(buffer, 0, received, 0, actualLength);
+                    SendMessage(Encoding.ASCII.GetString(received));
+                    Console.WriteLine("CubeMX says: " + Encoding.UTF8.GetString(received));
+                }
+                catch (IOException exc)
+                {
+                    Console.WriteLine("Exception raised during reading");
+                }
+                kickoffRead();
             };
             kickoffRead();
 
